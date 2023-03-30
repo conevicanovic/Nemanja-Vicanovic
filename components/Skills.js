@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { clearInterval } from "timers";
 import SingleSkill from "./SingleSkill";
 import { Cog8ToothIcon } from "@heroicons/react/20/solid";
+import SkillsContainer from "./SkillsContainer";
 function Skills() {
   const [skills, setSkills] = useState([
     "HTML",
@@ -22,13 +23,9 @@ function Skills() {
   return (
     <>
       <ul
-        className={`mx-64 relative flex flex-wrap items-center columns-3 flex-shrink-1 flex-grow justify-start bg-red-400 bg-opacity-40 rounded-t-lg ${
-          isEdit ? "drop-shadow-xl" : ""
-        }`}
+        className={`mx-64 relative flex flex-wrap items-center columns-3 flex-shrink-1 flex-grow justify-start bg-red-400 bg-opacity-40 rounded-t-lg`}
       >
-        {skills.map((skill, i) => {
-          return <SingleSkill key={i} skill={skill} isEdit={isEdit} />;
-        })}
+        <SkillsContainer isEdit={isEdit} />
 
         <button
           onClick={editHandler}

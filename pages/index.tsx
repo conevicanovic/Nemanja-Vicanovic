@@ -6,6 +6,8 @@ import { useRef, useState } from "react";
 import { useScrollPosition } from "@n8tb1t/use-scroll-position";
 import { title } from "process";
 import Skills from "../components/Skills";
+import Test from "../components/SkillsContainer";
+import SkillsContainer from "../components/SkillsContainer";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {

@@ -17,13 +17,13 @@ function SingleSkill({ skill, isEdit }) {
   }, [isEdit]);
 
   return (
-    <li
-      className={`py-2 px-4 bg-pink-50 rounded-2xl text-center m-4 text-2xl cursor-default duration-75 ${
-        bounce && "animate-bounce"
-      } hover:animate-none active:animate-wiggle active:absolute`}
+    <div
+      className={`py-2 px-4 select-none bg-pink-50 rounded-2xl text-center m-4 text-2xl cursor-default duration-75 ${
+        bounce && "animate-bounce active:opacity-0"
+      } hover:animate-none `}
     >
       {skill}
-    </li>
+    </div>
   );
 }
 
