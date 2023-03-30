@@ -46,7 +46,7 @@ export default function Home() {
         className="bg-hero-pattern w-[calc(100vw - 5px)] h-[2724px] opacity-60 overflow-hidden"
       >
         <h1 className={`text-9xl`} ref={mainTitle}>
-          Hi, I'm Nemanja, a FrontEnd developer.
+          Hi, I am Nemanja, a FrontEnd developer.
         </h1>
         <h2
           className={`text-5xl mb-[1500px] translate-y-[-750px]`}
