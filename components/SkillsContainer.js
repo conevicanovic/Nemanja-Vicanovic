@@ -19,7 +19,12 @@ import {
 import { SortableItem } from "./SortableItem";
 import { Item } from "./Item";
 import SingleSkill from "./SingleSkill";
-
+import { createContext } from "react";
+import { useContext } from "react";
+const ItemsContext = createContext(null);
+export function useItems() {
+  return useContext(ItemsContext);
+}
 export default function SkillsContainer(props) {
   const [activeId, setActiveId] = useState(null);
   const [items, setItems] = useState([
@@ -35,41 +40,46 @@ export default function SkillsContainer(props) {
     "FIGMA",
   ]);
   const sensors = useSensors(
-    useSensor(PointerSensor),
+    useSensor(PointerSensor, {
+      activationConstraint: {
+        distance: 5,
+      },
+    }),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
     })
   );
 
   return (
-    <DndContext
-      sensors={sensors}
-      collisionDetection={closestCenter}
-      onDragStart={handleDragStart}
-      onDragEnd={handleDragEnd}
-    >
-      <SortableContext items={items} strategy={rectSortingStrategy}>
-        {items.map((skill, id) => (
-          <SortableItem
-            key={id}
-            id={skill}
-            skill={skill}
-            isEdit={props.isEdit}
-          />
-        ))}
-      </SortableContext>
+    <ItemsContext.Provider value={{ items, setItems, activeId }}>
+      <DndContext
+        sensors={sensors}
+        collisionDetection={closestCenter}
+        onDragStart={handleDragStart}
+        onDragEnd={handleDragEnd}
+      >
+        <SortableContext items={items} strategy={rectSortingStrategy}>
+          {items.map((skill, id) => (
+            <SortableItem
+              key={id}
+              id={skill}
+              skill={skill}
+              isEdit={props.isEdit}
+            />
+          ))}
+        </SortableContext>
 
-      <DragOverlay>
-        {activeId ? (
-          <SingleSkill id={items.indexOf(activeId)} skill={activeId} />
-        ) : null}
-      </DragOverlay>
-    </DndContext>
+        <DragOverlay>
+          {activeId ? (
+            <SingleSkill id={items.indexOf(activeId)} skill={activeId} />
+          ) : null}
+        </DragOverlay>
+      </DndContext>
+    </ItemsContext.Provider>
   );
 
   function handleDragStart(event) {
     const { active } = event;
-
     setActiveId(active.id);
   }
 
