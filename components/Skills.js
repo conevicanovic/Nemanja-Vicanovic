@@ -5,8 +5,10 @@ import { Cog8ToothIcon } from "@heroicons/react/20/solid";
 import SkillsContainer from "./SkillsContainer";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import AddSkillsModal from "./AddSkillsModal";
 function Skills() {
   const [isEdit, setIsEdit] = useState(false);
+
   function editHandler() {
     setIsEdit(!isEdit);
   }
@@ -30,6 +32,9 @@ function Skills() {
 
         <button className="absolute right-[-15px] bottom-[-15px] w-[30px] h-[30px] bg-red-800 border border-red-950 opacity-60 rounded-full pointer-events-none animate-ping"></button>
       </ul>
+
+      {/* <AddSkillsModal isOpen={addModalOpen} setIsOpen={setAddModalOpen} /> */}
+
       {isEdit && (
         <div
           className="self-center text-xl bg-red-400 bg-opacity-40 rounded-b-lg p-5"
