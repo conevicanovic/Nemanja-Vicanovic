@@ -11,26 +11,31 @@ import SkillsContainer from "../components/SkillsContainer";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const mainTitle = useRef();
-  const main = useRef();
-  const aboutMe = useRef();
-  const skillsTitle = useRef();
+  const mainTitle = useRef<HTMLDivElement>(null);
+  const main = useRef<HTMLDivElement>(null);
+  const aboutMe = useRef<HTMLDivElement>(null);
+  const skillsTitle = useRef<HTMLDivElement>(null);
   useScrollPosition(({ prevPos, currPos }) => {
-    main.current.style.backgroundPosition = `0px ${-currPos.y * 0.9}px`;
-    mainTitle.current.style.transform = `translateY(${
+    let mainNode = main.current as any;
+    mainNode.style.backgroundPosition = `0px ${-currPos.y * 0.9}px`;
+    let mainTitleNode = mainTitle.current as any;
+    mainTitleNode.style.transform = `translateY(${
       -currPos.y * 2
     }px) translateX(${-currPos.y * 0.2}px)`;
-    aboutMe.current.style.transform = `translateY(${
+    let aboutMeNode = aboutMe.current as any;
+    aboutMeNode.style.transform = `translateY(${
       -750 - currPos.y * 2
     }px) translateX(${-currPos.y * 0.1}px)`;
-    console.log(currPos);
+
+    let skillsTitleNode = skillsTitle.current as any;
     if (currPos.y > -1600) {
       console.log(-1600 - currPos.y);
-      skillsTitle.current.style.transform = `translateY(${
+
+      skillsTitleNode.style.transform = `translateY(${
         -2400 - currPos.y * 1.5
       }px) translateX(${+800 + currPos.y * 0.5}px)`;
     } else {
-      skillsTitle.current.style.transform = "";
+      skillsTitleNode.style.transform = "";
     }
   });
   return (
