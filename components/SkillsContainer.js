@@ -57,7 +57,12 @@ export default function SkillsContainer(props) {
       <ItemsContext.Provider value={{ items, setItems, activeId }}>
         <DndContext
           backend={TouchBackend}
-          options={{ delayTouchStart: 10 }}
+          options={{
+            scrollAngleRanges: [
+              { start: 30, end: 150 },
+              { start: 210, end: 330 },
+            ],
+          }}
           sensors={sensors}
           collisionDetection={closestCenter}
           onDragStart={handleDragStart}
