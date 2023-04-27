@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { TouchBackend } from "react-dnd-touch-backend";
 import {
   closestCenter,
   DndContext,
@@ -55,6 +56,8 @@ export default function SkillsContainer(props) {
     <>
       <ItemsContext.Provider value={{ items, setItems, activeId }}>
         <DndContext
+          backend={TouchBackend}
+          options={{ enableHoverOutsideTarget: true }}
           sensors={sensors}
           collisionDetection={closestCenter}
           onDragStart={handleDragStart}
