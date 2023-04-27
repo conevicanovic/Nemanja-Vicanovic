@@ -62,10 +62,7 @@ export default function SkillsContainer(props) {
         <DndContext
           backend={TouchBackend}
           options={{
-            scrollAngleRanges: [
-              { start: 30, end: 150 },
-              { start: 210, end: 330 },
-            ],
+            delay: 10,
           }}
           sensors={sensors}
           collisionDetection={closestCenter}
