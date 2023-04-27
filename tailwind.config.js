@@ -4,7 +4,11 @@ module.exports = {
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
+
   theme: {
+    screens: {
+      mobile: { max: "767px" },
+    },
     extend: {
       backgroundImage: {
         "hero-pattern": "url('/background.png')",

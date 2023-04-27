@@ -48,13 +48,17 @@ export default function Home() {
       </Head>
       <main
         ref={main}
-        className="bg-hero-pattern w-[calc(100vw - 5px)] h-[2724px] opacity-60 overflow-hidden"
+        className="bg-hero-pattern w-[calc(100vw - 5px)] h-[5000px] opacity-60 overflow-hidden"
       >
-        <h1 className={`text-9xl`} ref={mainTitle}>
+        <div className="hidden w-full h-[300px] mobile:block"></div>
+        <h1
+          className={`text-9xl mobile:text-3xl mobile:text-center`}
+          ref={mainTitle}
+        >
           Hi, I am Nemanja, a FrontEnd developer.
         </h1>
         <h2
-          className={`text-5xl mb-[1500px] translate-y-[-750px]`}
+          className={`text-5xl mb-[1500px] translate-y-[-750px] mobile:text-xl mobile:pr-[6rem]`}
           ref={aboutMe}
         >
           I love design and have profound knowledge of technical side of react
@@ -73,9 +77,9 @@ export default function Home() {
           <Skills />
         </div>
       </main>
-      <footer className="w-full h-[360px] bg-red-300">
+      {/* <footer className="w-full h-[360px] bg-red-300">
         <div className="w-full h-[20px] bg-red-300 rounded-t-3xl -translate-y-full"></div>
-      </footer>
+      </footer> */}
     </>
   );
 }
