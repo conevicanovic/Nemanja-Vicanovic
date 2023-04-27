@@ -8,7 +8,7 @@ import { title } from "process";
 import Skills from "../components/Skills";
 import Test from "../components/SkillsContainer";
 import SkillsContainer from "../components/SkillsContainer";
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const mainTitle = useRef<HTMLDivElement>(null);
@@ -52,7 +52,7 @@ export default function Home() {
       >
         <div className="hidden w-full h-[300px] mobile:block"></div>
         <h1
-          className={`text-9xl mobile:text-3xl mobile:text-center`}
+          className={`text-9xl mobile:text-3xl mobile:text-center `}
           ref={mainTitle}
         >
           Hi, I am Nemanja, a FrontEnd developer.

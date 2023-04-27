@@ -11,13 +11,15 @@ function Skills() {
 
   function editHandler() {
     setIsEdit(!isEdit);
-    if (!isEdit) {
-      document.querySelector("body").style.overflow = "hidden";
-    } else document.querySelector("body").style.overflow = "unset";
   }
   useEffect(() => {
     AOS.init();
   }, []);
+  // useEffect(() => {
+  //   if (isEdit) {
+  //     document.querySelector("body").style.overflow = "hidden";
+  //   } else document.querySelector("body").style.overflow = "unset";
+  // }, [isEdit]);
 
   return (
     <>

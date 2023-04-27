@@ -57,7 +57,7 @@ export default function SkillsContainer(props) {
       <ItemsContext.Provider value={{ items, setItems, activeId }}>
         <DndContext
           backend={TouchBackend}
-          options={{ enableHoverOutsideTarget: true }}
+          options={{ delayTouchStart: 10 }}
           sensors={sensors}
           collisionDetection={closestCenter}
           onDragStart={handleDragStart}
