@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { TouchBackend } from "react-dnd-touch-backend";
 import {
   closestCenter,
@@ -51,7 +51,11 @@ export default function SkillsContainer(props) {
       coordinateGetter: sortableKeyboardCoordinates,
     })
   );
-
+  useEffect(() => {
+    if (activeId) {
+      document.querySelector("body").style.overflow = "hidden";
+    } else document.querySelector("body").style.overflow = "unset";
+  }, [activeId]);
   return (
     <>
       <ItemsContext.Provider value={{ items, setItems, activeId }}>

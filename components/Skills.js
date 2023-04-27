@@ -15,11 +15,6 @@ function Skills() {
   useEffect(() => {
     AOS.init();
   }, []);
-  // useEffect(() => {
-  //   if (isEdit) {
-  //     document.querySelector("body").style.overflow = "hidden";
-  //   } else document.querySelector("body").style.overflow = "unset";
-  // }, [isEdit]);
 
   return (
     <>
