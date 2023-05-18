@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
@@ -8,6 +10,8 @@ import { title } from "process";
 import Skills from "../components/Skills";
 import Test from "../components/SkillsContainer";
 import SkillsContainer from "../components/SkillsContainer";
+import AOS from "aos";
+import "aos/dist/aos.css";
 // const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
@@ -15,6 +19,7 @@ export default function Home() {
   const main = useRef<HTMLDivElement>(null);
   const aboutMe = useRef<HTMLDivElement>(null);
   const skillsTitle = useRef<HTMLDivElement>(null);
+  const projectsTitle = useRef<HTMLDivElement>(null);
   useScrollPosition(({ prevPos, currPos }) => {
     let mainNode = main.current as any;
     mainNode.style.backgroundPosition = `0px ${-currPos.y * 0.9}px`;
@@ -28,6 +33,7 @@ export default function Home() {
     }px) translateX(${-currPos.y * 0.1}px)`;
 
     let skillsTitleNode = skillsTitle.current as any;
+
     if (currPos.y > -1600) {
       console.log(-1600 - currPos.y);
 
@@ -38,6 +44,9 @@ export default function Home() {
       skillsTitleNode.style.transform = "";
     }
   });
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
     <>
       <Head>
@@ -48,7 +57,7 @@ export default function Home() {
       </Head>
       <main
         ref={main}
-        className="bg-hero-pattern w-[calc(100vw - 5px)] h-[5000px] opacity-60 overflow-hidden"
+        className="bg-hero-pattern opacity-60 w-[calc(100vw - 5px)] h-[5000px] opacity-60 overflow-hidden"
       >
         <div className="hidden w-full h-[300px] mobile:block"></div>
         <h1
@@ -66,15 +75,24 @@ export default function Home() {
           with backend developers to ship the best the possible solutions for
           our client problems.
         </h2>
-        <div className="flex flex-col">
+        <div className="flex flex-col mb-56 relative">
           <h2
             ref={skillsTitle}
-            className="text-4xl text-center bg-red-400 bg-opacity-40 m-auto p-4 pb-7 rounded-lg"
+            className="text-4xl text-center bg-gray-400 bg-opacity-40 m-auto p-4 pb-7 rounded-lg"
           >
             My skills
           </h2>
 
           <Skills />
+        </div>
+        <div className="flex flex-col">
+          <h2
+            data-aos="fade up"
+            ref={projectsTitle}
+            className="text-4xl text-center bg-gray-400 bg-opacity-40 m-auto p-4 pb-7 rounded-lg"
+          >
+            My projects
+          </h2>
         </div>
       </main>
       {/* <footer className="w-full h-[360px] bg-red-300">

@@ -11,7 +11,8 @@ module.exports = {
     },
     extend: {
       backgroundImage: {
-        "hero-pattern": "url('/background.png')",
+        // "hero-pattern": "url('/background.png')",
+        "hero-pattern": "url('/white-fur.jpg')",
       },
       animation: {
         wiggle: "wiggle 1s ease-in-out infinite",

@@ -27,9 +27,10 @@ function SingleSkill({ skill, isEdit }) {
 
   return (
     <div
+      style={({ top: "auto !important" }, { left: "auto !important" })}
       className={`relative py-2 px-4 select-none bg-pink-50 rounded-2xl text-center m-4 text-2xl cursor-grab duration-75 ${
         bounce && "animate-bounce"
-      }  ${activeId && "active:opacity-0 cursor-grabbing"} hover:animate-none`}
+      }  ${activeId && "active:opacity-0 cursor-grabbing"} `}
     >
       {skill}
       {isEdit && (
